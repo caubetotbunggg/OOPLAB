@@ -10,7 +10,7 @@ ANS: it appears No box
 How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” 
 ANS: we can use JOptionPane.showOptionDialog to input custom option
  */
-public class ex3 {
+public class ChangeOptionBox {
 
     public static void main(String[] args) {
         int option = JOptionPane.showConfirmDialog(null, "Do you want to change to first class ticket?");
