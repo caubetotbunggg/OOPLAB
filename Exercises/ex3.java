@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 What happens if users choose “Cancel”? 
 ANS: it appears No box
 How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” 
-ANS: we can use JOptionPane.showOptionDialog
+ANS: we can use JOptionPane.showOptionDialog to input custom option
  */
 public class ex3 {
 
