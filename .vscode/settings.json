@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "AimsProject\\src"
+        "AimsProject/src",
+        "OtherProject/hust.soict.globalict.garbage"
     ],
     "java.project.referencedLibraries": []
 }
