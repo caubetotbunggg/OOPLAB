@@ -1,4 +1,8 @@
-package aims;
+package hust.soict.dsai.aims.store;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+//import java.util.ArrayList;
+
 public class Store {
     private DigitalVideoDisc[] itemsInStore; // Array to store DigitalVideoDiscs
     private int currentCount;   // Tracks the number of DigitalVideoDiscs in the store
