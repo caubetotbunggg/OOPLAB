@@ -14,10 +14,14 @@ public class ex1{
         System.out.print("Enter the second number: ");
         double num2 = scanner.nextDouble();
 
+        //calculate sum
         double sum = num1 + num2;
+        //using abs to find the difference
         double difference = Math.abs(num1 - num2);
+        //calculate product
         double product = num1 * num2;
 
+        //handle the 0 case
         if (num2 != 0) {
             double quotient = num1 / num2;
             System.out.printf("Quotient: %.2f\n", quotient);
