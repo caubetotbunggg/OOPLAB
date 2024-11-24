@@ -28,8 +28,6 @@ public class StoreTest {
         // DigitalVideoDiscsplay the store again
         store.displayStore();
 
-        // Try removing a non-existent DigitalVideoDisc
-        store.removeDigitalVideoDisc(5);
 
     }
 }
