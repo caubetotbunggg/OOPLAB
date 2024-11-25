@@ -17,8 +17,7 @@ public class TestPassingParameter {
 
     public static void swap(DigitalVideoDisc o1, DigitalVideoDisc o2) {
         String oldTitle = o1.getTitle();
-        String oldTitle2 = o2.getTitle();
-        o1.setTitle(oldTitle2);
+        o1.setTitle(o2.getTitle());
         o2.setTitle(oldTitle);
     }
 
