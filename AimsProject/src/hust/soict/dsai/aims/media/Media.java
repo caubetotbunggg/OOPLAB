@@ -7,6 +7,27 @@ abstract public class Media {
     private int id;
     public static int nbId = 0;
 
+    public Media(String title) {
+        this.title = title;
+        this.id = nbId;
+        nbId++;
+    }
+
+    public Media(String title, String category) {
+        this.title = title;
+        this.category = category;
+        this.id = nbId;
+        nbId++;
+    }
+
+    public Media(String title, String category, float cost) {
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+        this.id = nbId;
+        nbId++;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -37,6 +58,16 @@ abstract public class Media {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String toString() {
+        return getId() + " - " + getTitle() + " - " + getCategory()  + ": " + getCost() + " $";
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        Media media = (Media) obj;
+        return title.equals(media.getTitle());
     }
 
     public Media(){

@@ -1,51 +1,45 @@
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 
 public class Store {
-    private DigitalVideoDisc[] itemsInStore; // Array to store DigitalVideoDiscs
-    private int currentCount;   // Tracks the number of DigitalVideoDiscs in the store
+    private ArrayList<Media> itemsInStore; 
 
-    // Constructor to initialize the store with a given capacity
-    public Store(int capacity) {
-        itemsInStore = new DigitalVideoDisc[capacity];
-        currentCount = 0;
+    public Store() {
+        itemsInStore = new ArrayList<>();
     }
 
-    public void addDigitalVideoDisc(DigitalVideoDisc DigitalVideoDisc) {
-        if (currentCount < itemsInStore.length) {
-            itemsInStore[currentCount] = DigitalVideoDisc;
-            currentCount++;
-            System.out.println("Added DigitalVideoDisc: " + DigitalVideoDisc.toString());
-        } else {
-            System.out.println("Store is full. Cannot add more DigitalVideoDiscs.");
+    public void addMedia(Media media) {
+        for (Media m : itemsInStore){
+            if (media.equals(m)) {
+                System.out.println("The media has been added already");
+                return;
+            } 
         }
+        itemsInStore.add(media);
+        System.out.println("Media added successfully");
     }
 
-    public void removeDigitalVideoDisc(int id) {
+    public void removeMedia(int id) {
         boolean found = false;
-        for (int i = 0; i < currentCount; i++) {
-            if (itemsInStore[i].getId() == id) { // Assuming DigitalVideoDisc has a getId() method
+        for (Media media : itemsInStore) {
+            if (media.getId() == id) { 
                 found = true;
-                // Shift all elements after the removed DigitalVideoDisc
-                for (int j = i; j < currentCount - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];
-                }
-                itemsInStore[currentCount - 1] = null; // Clear the last slot
-                currentCount--;
-                System.out.println("Removed DigitalVideoDisc with ID: " + id);
+                itemsInStore.remove(media);
+                System.out.println("Removed Media with ID: " + id);
                 break;
             }
         }
         if (!found) {
-            System.out.println("DigitalVideoDisc with ID " + id + " not found in the store.");
+            System.out.println("Media with ID " + id + " not found in the store.");
         }
     }
 
-    // Method to display all DigitalVideoDiscs in the store
     public void displayStore() {
-        System.out.println("DigitalVideoDiscs currently in the store:");
-        for (int i = 0; i < currentCount; i++) {
-            System.out.println(itemsInStore[i].toString());
-        }
+        System.out.println("Media currently in the store:");
+            for (Media media : itemsInStore) {
+                System.out.println(media.toString());
+            }
     }
 }

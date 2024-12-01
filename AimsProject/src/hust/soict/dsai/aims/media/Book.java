@@ -10,12 +10,12 @@ public class Book extends Media {
     public void addAuthor(String authorName){
         for(String s : authors){
             if(s.equals(authorName)){
-                System.out.println("The author has already been added");
+                System.out.println("The author has been added already");
                 return;
             }
         }
         authors.add(authorName);   
-        System.out.println("The author has been added");
+        System.out.println("Author added successfully");
     }
 
     public void removeAuthor(String authorName){
@@ -37,7 +37,20 @@ public class Book extends Media {
         this.authors = authors;
     }
 
-    public Book(){
-        
+    public Book(String title) {
+        super(title);
     }
+
+    public Book(String title, String category) {
+        super(title, category);
+    }
+
+    public Book(String title, String category, float cost) {
+        super(title, category, cost);
+    }
+
+    public String toString() {
+        return getId() + " - " + getTitle() + " - " + getCategory()  + ": " + getCost() + " $";
+    }
+
 }
