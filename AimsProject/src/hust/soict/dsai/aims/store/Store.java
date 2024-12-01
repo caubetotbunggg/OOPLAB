@@ -1,7 +1,5 @@
 package hust.soict.dsai.aims.store;
-
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
-//import java.util.ArrayList;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Store {
     private DigitalVideoDisc[] itemsInStore; // Array to store DigitalVideoDiscs
@@ -13,7 +11,6 @@ public class Store {
         currentCount = 0;
     }
 
-    // Method to add a DigitalVideoDisc to the store
     public void addDigitalVideoDisc(DigitalVideoDisc DigitalVideoDisc) {
         if (currentCount < itemsInStore.length) {
             itemsInStore[currentCount] = DigitalVideoDisc;
@@ -24,7 +21,6 @@ public class Store {
         }
     }
 
-    // Method to remove a DigitalVideoDisc from the store by ID
     public void removeDigitalVideoDisc(int id) {
         boolean found = false;
         for (int i = 0; i < currentCount; i++) {
