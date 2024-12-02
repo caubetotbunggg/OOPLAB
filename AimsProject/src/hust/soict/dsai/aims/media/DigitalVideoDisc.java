@@ -10,9 +10,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(title, category, cost);
     }
 
-    // public DigitalVideoDisc(String title, String category, String director, float cost) {
-    //     super(title, category, director, cost);
-    // }
+    public DigitalVideoDisc(String title, String category, String director, float cost) {
+       super(title, category, director, cost);
+     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         super(title, category, director, length, cost);
@@ -32,5 +32,23 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     public boolean isMatch(String title) {
         return getTitle().equals(title);
+    }
+
+    @Override
+    public int compareTo(Media other) {
+        if (!(other instanceof DigitalVideoDisc)) {
+            return super.compareTo(other);
+        }
+
+        DigitalVideoDisc otherDVD = (DigitalVideoDisc) other;
+        int titleComparison = this.getTitle().compareTo(otherDVD.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        int lengthComparison = Integer.compare(otherDVD.getLength(), this.getLength());
+        if (lengthComparison != 0) {
+            return lengthComparison;
+        }
+        return Double.compare(this.getCost(), otherDVD.getCost());
     }
 }

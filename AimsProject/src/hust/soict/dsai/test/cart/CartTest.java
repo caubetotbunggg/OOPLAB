@@ -1,7 +1,6 @@
 package hust.soict.dsai.test.cart;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
-import hust.soict.dsai.aims.media.Media;
 public class CartTest {
     public static void main(String[] args) {
         
@@ -22,9 +21,5 @@ public class CartTest {
         
         //Test the print method
         cart.printCart();
-
-        //Test the search methods
-        // cart.searchById(5);
-        // cart.searchByTitle("Aladin");
     }
 }

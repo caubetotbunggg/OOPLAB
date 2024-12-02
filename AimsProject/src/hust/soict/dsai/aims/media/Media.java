@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
-abstract public class Media {
+abstract public class Media implements Comparable<Media> {
     private String title;
 	private String category;
 	private float cost;
@@ -67,11 +67,26 @@ abstract public class Media {
     }
 
     @Override
-    public boolean equals(Object obj){
-        Media media = (Media) obj;
-        return title.equals(media.getTitle());
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Media)) {
+            return false;
+        }
+        // Compare the current object with the other Media object
+        Media other = (Media) obj;
+        // Implement comparison logic here
+        return this.getTitle().equals(other.getTitle()) && this.getId() == other.getId();
     }
 
+    @Override
+    public int compareTo(Media other) {
+        int titleComparison = this.title.compareTo(other.title);
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        // compare for higher cost if they have the same title
+        return Double.compare(other.cost, this.cost);
+    }
+    
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 

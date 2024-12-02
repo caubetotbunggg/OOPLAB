@@ -43,9 +43,6 @@ public class Store {
             }
     }
 
-
-
-
     public Media searchById(int id) {
 		boolean found = false;
 		for (int i = 0; i < itemsInStore.size(); i++) {
