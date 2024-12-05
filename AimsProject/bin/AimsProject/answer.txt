@@ -1,7 +1,0 @@
-con cac dat ngu hoc thieu nang tri tue nao lon nhay xuong ho chet me di
-
-2.1
-    In this case, varargs is the better choice because it provides cleaner and more intuitive usage for adding multiple DVDs to the cart. It avoids the extra step of creating an array, which is especially useful when the method is used frequently. However, if the DVDs are already stored in an array, the array parameter might make sense. Overall, for general use cases, varargs is preferred.
-
-3.0
-    Java always pass by value, the reason why method changeTitle works is by using setTitle to modify directly the objet
