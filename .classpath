@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="AimsProject/src"/>
 	<classpathentry kind="src" path="OtherProject/hust.soict.globalict.garbage"/>
+	<classpathentry kind="src" path="GUIProject/hust/soict/globalict/swing"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
