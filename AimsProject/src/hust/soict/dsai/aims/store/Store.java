@@ -74,4 +74,9 @@ public class Store {
 		}
         return null;
 	}
+
+    public ArrayList<Media> getItemsInStore() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getItemsInStore'");
+    }
 }

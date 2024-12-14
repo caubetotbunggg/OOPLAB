@@ -1,9 +1,7 @@
 package hust.soict.dsai.aims.screen;
 
-import java.awt.Dimension;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.*; 
+import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,10 +13,24 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreScreen extends JFrame {
     private Store store;
+
+    public StoreScreen(Store store) {
+        this.store = store;
+        Container cp = getContentPane();
+        cp.setLayout(new BorderLayout());
+    
+        cp.add(createNorth(), BorderLayout.NORTH);
+        cp.add(createCenter(), BorderLayout.CENTER);
+    
+        setVisible(true);
+        setTitle("Store");
+        setSize(1024, 768);
+    }    
     
     JPanel createNorth() {
         JPanel north = new JPanel();
@@ -47,7 +59,6 @@ public class StoreScreen extends JFrame {
         menuBar.add(menu);
         return menuBar;
     }
-
     
     JPanel createHeader() {
 
@@ -69,6 +80,19 @@ public class StoreScreen extends JFrame {
         header.add(Box.createRigidArea (new Dimension (10, 10)));
 
         return header;
-}
+    }
+
+    JPanel createCenter() {
+        JPanel center = new JPanel();
+        center.setLayout(new GridLayout(3, 3, 2, 2));
+
+        ArrayList<Media> mediaInStore = store.getItemsInStore();
+        for (int i = 0; i < 9; i++) {
+            MediaStore cell = new MediaStore(mediaInStore.get(i));
+            center.add(cell);
+        }
+
+        return center;
+    }
 
 }

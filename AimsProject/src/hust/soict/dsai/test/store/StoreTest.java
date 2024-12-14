@@ -1,5 +1,6 @@
 package hust.soict.dsai.test.store;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.screen.StoreScreen;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
@@ -25,7 +26,7 @@ public class StoreTest {
 
         // DigitalVideoDiscsplay the store again
         store.displayStore();
-
+        
     }
 }
 
