@@ -1,23 +1,31 @@
 package hust.soict.dsai.aims.screen;
 
+import javax.naming.LimitExceededException;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
+import hust.soict.dsai.aims.cart.Cart;
 
-import javax.swing.BorderFactory;
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class MediaStore extends JPanel {
     private Media media;
     
-    public MediaStore(Media media) {
+    public MediaStore(Media media, Cart cart) {
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -31,10 +39,45 @@ public class MediaStore extends JPanel {
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        container.add(new JButton("Add to cart"));
-        if (media instanceof Playable) {
-            container.add(new JButton("Play"));
-        }
+        JButton addCartBtn = new JButton("Add to Cart");
+		addCartBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					cart.addMedia(media);
+			}
+		});
+		container.add(addCartBtn);
+		
+		if (media instanceof Playable) {
+			JButton playBtn = new JButton("Play");
+			playBtn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JDialog playDialog = new JDialog();
+					JPanel mainGui = new JPanel(new BorderLayout());
+			        mainGui.setBorder(new EmptyBorder(20, 20, 20, 20));
+	
+			        mainGui.add(new JLabel("Playing... " + media.getTitle()), BorderLayout.CENTER);
+			        System.out.println(media.getTitle());
+			    
+			        JPanel buttonPanel = new JPanel(new FlowLayout());
+                    JButton close = new JButton("Stop");
+                    close.addActionListener(ev -> {
+                        playDialog.setVisible(false);
+                        System.out.println("Stopped playing.");
+                    });
+                    buttonPanel.add(close);
+                    mainGui.add(buttonPanel, BorderLayout.SOUTH);
+                    
+			        playDialog.setContentPane(mainGui);
+			        playDialog.setLocationRelativeTo(playBtn);
+			        playDialog.pack();
+			        playDialog.setVisible(true);
+				}
+			});
+			container.add(playBtn);
+		}
 
         this.add(Box.createVerticalGlue());
         this.add(title);
